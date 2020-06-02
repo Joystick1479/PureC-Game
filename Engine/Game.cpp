@@ -22,7 +22,7 @@
 #include "Game.h"
 #include "Player.h"
 
-#include <iostream>
+#include <ctime>
 
 
 Game::Game( MainWindow& wnd )
@@ -110,7 +110,7 @@ void Game::ComposeFrame()
 		playerIt != end;
 		++playerIt)
 	{
-		(*playerIt)->DrawPlayer(&gfx);
+		(*playerIt)->Render(&gfx);
 
 	}
 }

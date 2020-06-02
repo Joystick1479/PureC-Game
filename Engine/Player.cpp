@@ -11,25 +11,29 @@ Player::Player(const int&x, const int&y)
 
 }
 
-Player::Player(MainWindow & wnd)
-{
-
-}
-
-
 Player::~Player()
 {
 
 }
 
-int Player::GetXLocation(Player * player)
+int Player::GetXPosition() const
 {
-	return player->xCord;
+	return xCord;
 }
 
-int Player::GetYLocation(Player * player)
+int Player::GetYPosition() const
 {
-	return player->yCord;
+	return yCord;
+}
+
+void Player::SetXPosition(const int& Xlocation)
+{
+	xCord = Xlocation;
+}
+
+void Player::SetYPosition(const int& Ylocation)
+{
+	yCord = Ylocation;
 }
 
 void Player::GoRight()
@@ -49,7 +53,7 @@ void Player::GoUp()
 	yCord = yCord - 1;
 }
 
-void Player::DrawPlayer(Graphics* gfx)
+void Player::Render(Graphics* gfx) const
 {
 	int x = xCord;
 	int y = yCord;
@@ -371,22 +375,3 @@ void Player::DrawPlayer(Graphics* gfx)
 	gfx->PutPixel(12 + x, 19 + y, 0, 0, 0);
 }
 
-void Player::PlayerController()
-{
-	//if (wnd.kbd.KeyIsPressed(VK_RIGHT) || wnd.kbd.KeyIsPressed('D'))
-	//{
-	//	playerX = playerX + 1;
-	//}
-	//if (wnd.kbd.KeyIsPressed(VK_UP) || wnd.kbd.KeyIsPressed('W'))
-	//{
-	//	playerY = playerY - 1;
-	//}
-	//if (wnd.kbd.KeyIsPressed(VK_LEFT) || wnd.kbd.KeyIsPressed('A'))
-	//{
-	//	playerX = playerX - 1;
-	//}
-	//if (wnd.kbd.KeyIsPressed(VK_DOWN) || wnd.kbd.KeyIsPressed('S'))
-	//{
-	//	playerY = playerY + 1;
-	//}
-}

@@ -1,23 +1,28 @@
 #pragma once
+
+#include "Entity.h"
 class Graphics;
 
-class Player
+class Player : public Entity
 {
 public:
 
 	Player(const int&x, const int&y);
-	Player(class MainWindow& wnd);
 
 	~Player();
 
-	int GetXLocation(Player* player);
-	int GetYLocation(Player* player);
+	int GetXPosition() const override;
+	int GetYPosition() const override;
+
+	void SetXPosition(const int& Xlocation) override;
+	void SetYPosition(const int& Ylocation) override;
+
 	void GoUp();
 	void GoDown();
 	void GoLeft();
 	void GoRight();
 
-	void DrawPlayer(Graphics* gfx);
+	void Render(Graphics* gfx) const override;
 
 
 private:
@@ -25,7 +30,6 @@ private:
 	//Location
 	int xCord, yCord;
 
-	void PlayerController();
 
 };
 
