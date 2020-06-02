@@ -1,0 +1,16 @@
+﻿  compilation header save succeeded; see C:\Users\barwen\Documents\PureCppGame\Engine\FramebufferPS.shh
+  compilation header save succeeded; see C:\Users\barwen\Documents\PureCppGame\Engine\FramebufferVS.shh
+  DXErr.cpp
+  Game.cpp
+  Graphics.cpp
+  Keyboard.cpp
+  Main.cpp
+  MainWindow.cpp
+  Mouse.cpp
+  Player.cpp
+  Trwa generowanie kodu
+  563 of 568 functions (99.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Zakończono generowanie kodu
+  Engine.vcxproj -> C:\Users\barwen\Documents\PureCppGame\Release\Engine.exe
