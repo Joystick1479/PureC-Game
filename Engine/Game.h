@@ -24,6 +24,7 @@
 #include "Mouse.h"
 #include "Graphics.h"
 #include <memory>
+#include <list>
 
 class Player;
 
@@ -33,14 +34,17 @@ public:
 	Game( class MainWindow& wnd );
 	Game( const Game& ) = delete;
 	Game& operator=( const Game& ) = delete;
+	~Game();
 	void Go();
 private:
 	void ComposeFrame();
 	void UpdateModel();
-	void DrawFace(const int&x, const int&y);
 	/********************************/
 	/*  User Functions              */
 	/********************************/
+	void SpawnPlayer();
+
+	void DeleteAllPlayers();
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -48,6 +52,9 @@ private:
 	/*  User Variables              */
 	/********************************/
 	Player* player;
+
+	typedef std::list<Player*> PlayersList;
+	PlayersList playerlist_;
 	//Coordiantes
 	int playerX, playerY;
 };
