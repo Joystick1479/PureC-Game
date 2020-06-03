@@ -116,6 +116,7 @@ void Game::ComposeFrame()
 
 	}
 
+	//Render,deleting enemies when player overlaps with them
 
 	for (EnemyList::const_iterator enemyIt = enemylist_.begin(),
 		end = enemylist_.end();
@@ -129,10 +130,12 @@ void Game::ComposeFrame()
 			{
 				(*enemyIt)->Render(&gfx);
 			}
+			else
+			{
+				enemylist_.remove(*enemyIt);
+			}
 		}
 	}
-
-	
 }
 
 void Game::DeleteAllPlayers()

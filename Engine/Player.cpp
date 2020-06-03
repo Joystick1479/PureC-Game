@@ -37,10 +37,52 @@ void Player::MovementHandle(const std::string & str)
 	{
 		xCord = xCord + 1;
 	}
+	xCord = ClampScreenX(xCord, width);
+	yCord = ClampScreenY(yCord, height);
+
+}
+
+int Player::ClampScreenX(const int& ClampX, const int& ClampWidth)
+{
+	const int right = ClampX + ClampWidth;
+	if (ClampX < 0)
+	{
+		return 0;
+	}
+	else if (right >= ScreenWidth)
+	{
+		return (ScreenWidth - 1) - ClampWidth;
+	}
+	else
+	{
+		return ClampX;
+	}
+	return 0;
+}
+
+int Player::ClampScreenY(const int& ClampY, const int& ClampHeight)
+{
+	const int bottom = ClampY + ClampHeight;
+	if (ClampY < 0)
+	{
+		return 0;
+	}
+	else if (bottom >= ScreenHeight)
+	{
+		return (ScreenHeight - 1) - ClampHeight;
+	}
+	else
+	{
+		return ClampY;
+	}
+	return 0;
 }
 
 void Player::Render(Graphics* gfx) const
 {
+	ScreenWidth = gfx->ScreenWidth;
+	ScreenHeight = gfx->ScreenHeight;
+
 	int x = xCord;
 	int y = yCord;
 	gfx->PutPixel(7 + x, 0 + y, 0, 0, 0);

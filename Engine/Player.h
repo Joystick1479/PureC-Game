@@ -21,6 +21,10 @@ public:
 
 private:
 
+	int ClampScreenX(const int& ClampX, const int& ClampWidth);
+	int ClampScreenY(const int& ClampY, const int& ClampHeight);
+	mutable int ScreenWidth;
+	mutable int ScreenHeight;
 
 };
 
