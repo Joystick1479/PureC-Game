@@ -16,41 +16,24 @@ Player::~Player()
 
 }
 
-int Player::GetXPosition() const
+void Player::MovementHandle(const std::string & str)
 {
-	return xCord;
-}
-
-int Player::GetYPosition() const
-{
-	return yCord;
-}
-
-void Player::SetXPosition(const int& Xlocation)
-{
-	xCord = Xlocation;
-}
-
-void Player::SetYPosition(const int& Ylocation)
-{
-	yCord = Ylocation;
-}
-
-void Player::GoRight()
-{
-	xCord = xCord + 1;
-}
-void Player::GoDown()
-{
-	yCord = yCord + 1;
-}
-void Player::GoLeft()
-{
-	xCord = xCord - 1;
-}
-void Player::GoUp()
-{
-	yCord = yCord - 1;
+	if (str == "GoUp")
+	{
+		yCord = yCord - 1;
+	}
+	if (str == "GoDown")
+	{
+		yCord = yCord + 1;
+	}
+	if (str == "GoLeft")
+	{
+		xCord = xCord - 1;
+	}
+	if (str == "GoRight")
+	{
+		xCord = xCord + 1;
+	}
 }
 
 void Player::Render(Graphics* gfx) const

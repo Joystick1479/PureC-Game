@@ -21,6 +21,7 @@
 #include "MainWindow.h"
 #include "Game.h"
 #include "Player.h"
+#include "Enemy.h"
 
 #include <ctime>
 
@@ -41,6 +42,7 @@ Game::~Game()
 {
 	delete player;
 	DeleteAllPlayers();
+	DeleteAllEnemies();
 }
 
 void Game::Go()
@@ -58,28 +60,28 @@ void Game::UpdateModel()
 	{
 		if (player)
 		{
-			player->GoRight();
+			player->MovementHandle("GoRight");
 		}
 	}
 	if (wnd.kbd.KeyIsPressed(VK_UP) || wnd.kbd.KeyIsPressed('W'))
 	{
 		if (player)
 		{
-			player->GoUp();
+			player->MovementHandle("GoUp");
 		}
 	}
 	if (wnd.kbd.KeyIsPressed(VK_LEFT) || wnd.kbd.KeyIsPressed('A'))
 	{
 		if (player)
 		{
-			player->GoLeft();
+			player->MovementHandle("GoLeft");
 		}
 	}
 	if (wnd.kbd.KeyIsPressed(VK_DOWN) || wnd.kbd.KeyIsPressed('S'))
 	{
 		if (player)
 		{
-			player->GoDown();
+			player->MovementHandle("GoDown");
 		}
 	}
 }
@@ -92,8 +94,8 @@ void Game::SpawnPlayer()
 		int mousePosX = wnd.mouse.GetPosX();
 		int mousePosY = wnd.mouse.GetPosY();
 
-		Player* ptr = new Player(mousePosX, mousePosY);
-		playerlist_.push_back(ptr);
+		enemy = new Enemy(mousePosX, mousePosY);
+		enemylist_.push_back(enemy);
 	}
 
 }
@@ -113,6 +115,14 @@ void Game::ComposeFrame()
 		(*playerIt)->Render(&gfx);
 
 	}
+
+	for (EnemyList::const_iterator enemyIt = enemylist_.begin(),
+		end = enemylist_.end();
+		enemyIt != end;
+		++enemyIt)
+	{
+		(*enemyIt)->Render(&gfx);
+	}
 }
 
 void Game::DeleteAllPlayers()
@@ -126,4 +136,16 @@ void Game::DeleteAllPlayers()
 	}
 
 	playerlist_.clear();
+}
+void Game::DeleteAllEnemies()
+{
+	for (EnemyList::const_iterator enemyIt = enemylist_.begin(),
+		end = enemylist_.end();
+		enemyIt != end;
+		++enemyIt)
+	{
+		delete (*enemyIt);
+	}
+
+	enemylist_.clear();
 }

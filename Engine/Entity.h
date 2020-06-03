@@ -16,9 +16,11 @@ public:
 	virtual void SetXPosition(const int& Xposition);
 	virtual void SetYPosition(const int& Yposition);
 
+	int xCord, yCord;
+
 private:
 
-	int xCord, yCord;
+	
 
 };
 

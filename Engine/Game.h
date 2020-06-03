@@ -27,6 +27,7 @@
 #include <list>
 
 class Player;
+class Enemy;
 
 class Game
 {
@@ -45,6 +46,7 @@ private:
 	void SpawnPlayer();
 
 	void DeleteAllPlayers();
+	void DeleteAllEnemies();
 private:
 	MainWindow& wnd;
 	Graphics gfx;
@@ -52,9 +54,13 @@ private:
 	/*  User Variables              */
 	/********************************/
 	Player* player;
+	Enemy * enemy;
 
 	typedef std::list<Player*> PlayersList;
+	typedef std::list<Enemy*> EnemyList;
 	PlayersList playerlist_;
+	EnemyList enemylist_;
+
 	//Coordiantes
 	int playerX, playerY;
 };

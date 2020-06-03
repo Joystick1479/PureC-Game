@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include <string>
 class Graphics;
 
 class Player : public Entity
@@ -11,18 +12,11 @@ public:
 
 	~Player();
 
-	int GetXPosition() const override;
-	int GetYPosition() const override;
-
-	void SetXPosition(const int& Xlocation) override;
-	void SetYPosition(const int& Ylocation) override;
-
-	void GoUp();
-	void GoDown();
-	void GoLeft();
-	void GoRight();
-
 	void Render(Graphics* gfx) const override;
+
+	//Passing strings GoUp,GoDown, etc by player controller ( game)
+	void MovementHandle(const std::string& str);
+
 
 
 private:
