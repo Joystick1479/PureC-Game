@@ -47,6 +47,9 @@ private:
 
 	void DeleteAllPlayers();
 	void DeleteAllEnemies();
+
+	bool IsColliding(const int& x0, const int& y0, const int& width0, const int& height0,
+		const int& x1, const int& y1, const int& width1, const int& height1);
 private:
 	MainWindow& wnd;
 	Graphics gfx;

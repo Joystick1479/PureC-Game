@@ -6,12 +6,13 @@ Enemy::Enemy(const int&x, const int&y)
 {
 	xCord = x;
 	yCord = y;
+	height = 24;
+	width = 24;
 }
 
 
 Enemy::~Enemy()
 {
-
 }
 
 void Enemy::Render(Graphics * gfx) const

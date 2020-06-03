@@ -116,13 +116,23 @@ void Game::ComposeFrame()
 
 	}
 
+
 	for (EnemyList::const_iterator enemyIt = enemylist_.begin(),
 		end = enemylist_.end();
 		enemyIt != end;
 		++enemyIt)
 	{
-		(*enemyIt)->Render(&gfx);
+		if (player)
+		{
+			if (!IsColliding(player->GetXPosition(), player->GetYPosition(), player->width, player->height,
+				(*enemyIt)->GetXPosition(), (*enemyIt)->GetYPosition(), (*enemyIt)->width, (*enemyIt)->height))
+			{
+				(*enemyIt)->Render(&gfx);
+			}
+		}
 	}
+
+	
 }
 
 void Game::DeleteAllPlayers()
@@ -149,3 +159,18 @@ void Game::DeleteAllEnemies()
 
 	enemylist_.clear();
 }
+
+bool Game::IsColliding(const int & x0, const int & y0, const int & width0, const int & height0, 
+	const int & x1, const int & y1, const int & width1, const int & height1)
+{
+	const int right0 = x0 + width0;
+	const int bottom0 = y0 + height0;
+	const int right1 = x1 + width1;
+	const int bottom1 = y1 + height1;
+
+	return right0 >= x1 &&
+		x0 <= right1 &&
+		bottom0 >= y1 &&
+		y0 <= bottom1;
+}
+

@@ -18,6 +18,8 @@ public:
 
 	int xCord, yCord;
 
+	int height, width;
+
 private:
 
 	

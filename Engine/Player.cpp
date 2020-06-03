@@ -9,6 +9,9 @@ Player::Player(const int&x, const int&y)
 	xCord = x;
 	yCord = y;
 
+	height = 20;
+	width = 20;
+
 }
 
 Player::~Player()
